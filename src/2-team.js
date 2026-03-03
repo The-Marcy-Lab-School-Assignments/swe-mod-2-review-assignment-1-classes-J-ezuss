@@ -1,9 +1,6 @@
 // Problem 2: Composition - Team and Player
 // Implement your Player and Team classes below
 
-// Problem 2: Composition - Team and Player
-// Implement your Player and Team classes below
-
 class Player {
   constructor(name, position, jerseyNumber) {
     this.name = name;
