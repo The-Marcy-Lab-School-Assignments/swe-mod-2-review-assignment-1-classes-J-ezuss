@@ -38,14 +38,15 @@ class Team {
     return true;
   }
   moveToStarters(name) {
-    let foundIndex = this.addBenchPlayer.findIndex(
-      (player) => player.name === name,
-    );
+    let alreadyStarter = this.#starters.find((player) => player.name === name);
+    if (alreadyStarter) return false;
+
+    let foundIndex = this.#bench.findIndex((player) => player.name === name);
     if (foundIndex === -1) {
       return false;
     }
     let found = this.#bench.splice(foundIndex, 1);
-    this.#starters.push(found);
+    this.#starters.push(found[0]);
     return true;
   }
 }

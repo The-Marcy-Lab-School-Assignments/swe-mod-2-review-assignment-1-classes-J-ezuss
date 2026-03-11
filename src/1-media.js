@@ -9,7 +9,9 @@ class MediaItem {
     return `Playing: ${this.title}`;
   }
   getFormattedDuration() {
-    return new Date(this.duration);
+    const minutes = Math.floor(this.duration / 60);
+    const seconds = this.duration % 60;
+    return `${minutes}:${seconds.toString().padStart(2, '0')}`;
   }
 }
 
@@ -30,18 +32,18 @@ class Podcast extends MediaItem {
     this.episodeNumber = episodeNumber;
   }
   play() {
-    return `Playing: ${this.tile} with host ${this.host}, Episode ${this.episodeNumber}`;
+    return `Playing: ${this.title} with host ${this.host}, Episode ${this.episodeNumber}`;
   }
 }
 
 class Audiobook extends MediaItem {
-  constructor(title, author, narrator) {
-    super(title);
+  constructor(title, duration, author, narrator) {
+    super(title, duration);
     this.author = author;
     this.narrator = narrator;
   }
   play() {
-    return `Playing: ${this.tile} by ${this.author}, narrated by ${this.narrator}`;
+    return `Playing: ${this.title} by ${this.author}, narrated by ${this.narrator}`;
   }
 }
 
